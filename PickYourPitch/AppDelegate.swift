@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("App has never been launched before")
             UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-            UserDefaults.standard.set(0, forKey: "pitchSliderSetting")
+            UserDefaults.standard.set(0.0, forKey: "pitchSliderSetting")
             UserDefaults.standard.synchronize()
         }
     }
