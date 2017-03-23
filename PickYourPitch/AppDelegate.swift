@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Usually this is not overridden. Using the "did finish launching" method is more typical
         print("App Delegate: will finish launching")
         
+        checkIfFirstLaunch()
+        
         return true
     }
     
@@ -30,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         print("App Delegate: did finish launching")
+        
         
         return true
     }
@@ -65,5 +68,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         print("App Delegate: will terminate")
     }
+
+    func checkIfFirstLaunch() {
+        if UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
+            print("App has launched before")
+        } else {
+            print("App has never been launched before")
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            UserDefaults.standard.set(0, forKey: "pitchSliderSetting")
+            UserDefaults.standard.synchronize()
+        }
+    }
+
 }
 
